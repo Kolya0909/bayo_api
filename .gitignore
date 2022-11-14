@@ -6,7 +6,6 @@
 
 # Ignore bundler config.
 /.bundle
-
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
@@ -27,3 +26,12 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+.idea
+.DS_Store
+.DS_Store?
+app/.DS_Store
+app/controllers/.DS_Store
+app/controllers/api/.DS_Store
+app/services/.DS_Store
+./.DS_Store
+Gemfile.lock
