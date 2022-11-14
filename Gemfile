@@ -18,7 +18,7 @@ gem 'devise_token_auth'
 gem 'devise-two-factor'
 
 #for async query
-gem 'sidekiq', '~> 7.0', '>= 7.0.1'
+gem 'sidekiq', '<7'
 gem 'redis', '~> 5.0', '>= 5.0.5'
 
 #sendgrid
@@ -58,6 +58,8 @@ gem 'pry', '~> 0.14.1'
 gem 'swagger-docs'
 gem 'swagger_ui_engine', github: 'azelenets/swagger_ui_engine'
 
+
+gem 'sprockets', '~>3.0'
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
