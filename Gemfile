@@ -16,6 +16,11 @@ gem "puma", "~> 5.0"
 gem 'devise'
 gem 'devise_token_auth'
 gem 'devise-two-factor'
+gem 'devise-jwt', '~> 0.10.0'
+gem 'rack-cors'
+gem 'uuid', '~> 2.3', '>= 2.3.9'
+gem 'jwt', '~> 2.3'
+gem 'bcrypt', '~> 3.1', '>= 3.1.17'
 
 #for async query
 gem 'sidekiq', '<7'
