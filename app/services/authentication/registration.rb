@@ -1,25 +1,22 @@
 module Authentication
   class Registration
-
-    def initialize(user)
-      @user = user
+    attr_reader :token
+    def initialize(main_admin)
+      @main_admin = main_admin
     end
 
     def call
-      {
-        token: JWT.encode(payload, JWT_SERVER_SECRET_TOKEN, HASH_CODE),
-        user: payload
-      }
+      @token = JWT.encode(payload, JWT_SERVER_SECRET_TOKEN, HASH_CODE)
     end
 
     private
-    attr_reader :user
+    attr_reader :main_admin
 
     def payload
       {
-        :email => user.email,
-        :user_id=> user.id,
-        :name => user.name,
+        :email => main_admin.email,
+        :main_admin_id=> main_admin.id,
+        :name => main_admin.name,
         :exp => Time.now.to_i + 12000
       }
     end

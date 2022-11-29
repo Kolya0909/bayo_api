@@ -16,8 +16,11 @@ module Api
         end
 
         def sign_up
-          return if MainAdmin.find_by_email(params[:email])
-          redirect_to swagger_ui_engine_path
+          service = MainAdminFlow::Create.new(params)
+          service.call
+          render_success service.main_admin
+                                .as_api_response(:list)
+                                .merge({token: service.token})
         end
 
         def sign_in
