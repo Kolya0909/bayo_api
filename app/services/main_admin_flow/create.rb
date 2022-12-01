@@ -5,19 +5,16 @@ module MainAdminFlow
 
     def initialize(params)
       @params = params
-      @password = params[:password]
-      @password_confirmation = params[:password_confirmation]
       @error_message = nil
     end
 
     def call
-      return @error_message = "email was used#{params}" if main_admin_was_created?
-      return @error_message = "password is invalid" unless password_equal_password_confirmation?
+      return @error_message = I18n.t('errors.email_was_user') if main_admin_was_created?
       create_main_admin!
     end
 
     private
-    attr_reader :params, :password, :password_confirmation
+    attr_reader :params
 
     def create_main_admin!
       @main_admin = MainAdmin.create!(main_admin_params)
@@ -26,10 +23,6 @@ module MainAdminFlow
 
     def main_admin_was_created?
       MainAdmin.find_by_email(params[:email])
-    end
-
-    def password_equal_password_confirmation?
-      password.eql?(password_confirmation)
     end
 
     def payload

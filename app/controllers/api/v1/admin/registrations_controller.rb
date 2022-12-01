@@ -11,20 +11,35 @@ module Api
           param :form, :email, :string, :required, 'Main admin email'
           param :form, :name, :string, :required, 'Main admin name'
           param :form, :password, :string, :required, 'Main admin password'
-          param :form, :password_confirmation, :string, :required, 'Main admin email'
           response :ok, 'Success'
         end
 
         def sign_up
           service = MainAdminFlow::Create.new(params)
           service.call
-          render_success service.main_admin
+
+          return render_success service.main_admin
                                 .as_api_response(:list)
-                                .merge({token: service.token})
+                                .merge({token: service.token}) if service.main_admin
+
+          validation_error(service.error_message)
+        end
+
+        swagger_api :sign_in do
+          summary 'Main admin sign_in'
+          param :form, :email, :string, :required, "Main admin email"
+          param :form, :password, :string, :required, "Main admin password"
+          response :ok, 'Success'
         end
 
         def sign_in
-          render json: { message: "Welcome!" }
+          service = MainAdminFlow::Session.new(params)
+          service.call
+
+          return validation_error(service.error_message) if service.error_message
+          render_success service.main_admin
+                                .as_api_response(:list)
+                                .merge({ token: service.token })
         end
 
       end

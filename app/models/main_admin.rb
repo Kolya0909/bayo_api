@@ -1,5 +1,5 @@
 class MainAdmin < ApplicationRecord
-
+  has_secure_password
   acts_as_api
 
   api_accessible :list do |t|
