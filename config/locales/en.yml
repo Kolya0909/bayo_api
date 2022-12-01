@@ -33,6 +33,6 @@ en:
   hello: "Hello world"
   errors:
     validation: Validation error has occurred
-    email_was_user: This email was used
-    email_or_password_incorrect: Email or password incored
+    email_was_user: This email is already in use
+    email_or_password_incorrect: Email or password is incorrect
 
