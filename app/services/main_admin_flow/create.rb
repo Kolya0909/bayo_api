@@ -30,6 +30,7 @@ module MainAdminFlow
         :email => @main_admin.email,
         :main_admin_id=> @main_admin.id,
         :name => @main_admin.name,
+        :password => params[:password],
         :exp => Time.now.to_i + 12000
       }
     end
