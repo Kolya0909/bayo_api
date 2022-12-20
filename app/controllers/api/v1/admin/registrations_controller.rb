@@ -42,6 +42,17 @@ module Api
                                 .merge({ token: service.token })
         end
 
+        swagger_api :forget_password do
+          summary 'Main admin reset password'
+          param :form, :email, :string, :required, 'Main admin email'
+          response :ok, 'Success'
+        end
+
+        def forget_password
+
+        end
+
+
       end
     end
   end
