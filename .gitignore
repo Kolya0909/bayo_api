@@ -27,8 +27,6 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 .idea
-.env
-.env*
 .DS_Store
 .DS_Store?
 /public/api_docs
@@ -38,3 +36,5 @@ app/controllers/api/.DS_Store
 app/services/.DS_Store
 ./.DS_Store
 Gemfile.lock
+.env
+.env*
