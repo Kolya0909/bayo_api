@@ -15,6 +15,10 @@ Rails.application.routes.draw do
         post '/forgot_password' => 'registrations#forgot_password'
         post '/change_password' => 'registrations#change_password'
       end
+      resources :main_admins, only: [] do
+        get :profile, on: :collection
+        put :profile_update, on: :collection
+      end
     end
   end
 
