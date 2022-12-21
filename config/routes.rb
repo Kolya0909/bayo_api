@@ -12,7 +12,8 @@ Rails.application.routes.draw do
       namespace :admin do
         post '/sign_up' => 'registrations#sign_up'
         post '/sign_in' => 'registrations#sign_in'
-        post '/forget_password' => 'registrations#forget_password'
+        post '/forgot_password' => 'registrations#forgot_password'
+        post '/change_password' => 'registrations#change_password'
       end
     end
   end

@@ -42,16 +42,30 @@ module Api
                                 .merge({ token: service.token })
         end
 
-        swagger_api :forget_password do
+        swagger_api :forgot_password do
           summary 'Main admin reset password'
           param :form, :email, :string, :required, 'Main admin email'
           response :ok, 'Success'
         end
 
-        def forget_password
-
+        def forgot_password
+          service = MainAdminFlow::ForgotPassword.new(params[:email])
+          service.call
+          return validation_error(service.error_message) if service.error_message
+          render_success true
         end
 
+        swagger_api :change_password do
+          summary 'Change main admin password'
+          param :header, :authtoken, :string, :required, 'main admin authtoken'
+          response :ok, 'Success'
+        end
+
+        def change_password
+          current_main_admin_must_be && return
+
+          render_success(current_main_admin)
+        end
 
       end
     end

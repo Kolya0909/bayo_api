@@ -21,7 +21,7 @@ gem 'rack-cors'
 gem 'uuid', '~> 2.3', '>= 2.3.9'
 gem 'jwt', '~> 2.3'
 gem 'bcrypt', '~> 3.1', '>= 3.1.17'
-
+gem 'passgen', '~> 1.2'
 #for async query
 gem 'sidekiq', '<7'
 gem 'redis', '~> 5.0', '>= 5.0.5'

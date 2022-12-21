@@ -33,6 +33,9 @@ en:
   hello: "Hello world"
   errors:
     validation: Validation error has occurred
-    email_was_user: This email is already in use
+    email_was_used: This email is already in use
     email_or_password_incorrect: Email or password is incorrect
+    main_admin_with_this_email_doesnt_exist: Main admin with this email doesnt exist
+    you_must_sign_in_for_continue: You must sign in for continue
+
 

@@ -9,7 +9,7 @@ module MainAdminFlow
     end
 
     def call
-      return @error_message = I18n.t('errors.email_was_user') if main_admin_was_created?
+      return @error_message = I18n.t('errors.email_was_used') if main_admin_was_created?
       create_main_admin!
     end
 
@@ -18,7 +18,7 @@ module MainAdminFlow
 
     def create_main_admin!
       @main_admin = MainAdmin.create!(main_admin_params)
-      @token = JWT.encode(payload, JWT_SERVER_SECRET_TOKEN, HASH_CODE)
+      @token = JWT.encode(payload, ENV['JWT_SERVER_SECRET_TOKEN'], ENV['HASH_CODE'])
     end
 
     def main_admin_was_created?
