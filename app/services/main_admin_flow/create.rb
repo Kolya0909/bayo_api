@@ -18,7 +18,7 @@ module MainAdminFlow
 
     def create_main_admin!
       @main_admin = MainAdmin.create!(main_admin_params)
-      @token = JWT.encode(payload, ENV['JWT_SERVER_SECRET_TOKEN'], ENV['HASH_CODE'])
+      @token = JWT.encode(payload, JWT_SERVER_SECRET_TOKEN, HASH_CODE)
     end
 
     def main_admin_was_created?

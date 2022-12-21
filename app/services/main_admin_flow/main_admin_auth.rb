@@ -18,7 +18,7 @@ module MainAdminFlow
 
     def get_token_data
       begin
-        JWT.decode(token, ENV['JWT_SERVER_SECRET_TOKEN'], ENV['HASH_CODE']).first
+        JWT.decode(token, JWT_SERVER_SECRET_TOKEN, HASH_CODE).first
         rescue JWT::ExpiredSignature
         rescue JWT::VerificationError
         rescue JWT::DecodeError

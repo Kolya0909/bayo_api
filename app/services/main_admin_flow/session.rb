@@ -24,7 +24,7 @@ module MainAdminFlow
     end
 
     def generate_token
-      @token = JWT.encode(payload, ENV['JWT_SERVER_SECRET_TOKEN'], ENV['HASH_CODE'])
+      @token = JWT.encode(payload, JWT_SERVER_SECRET_TOKEN, HASH_CODE)
     end
 
     def check_main_admin_password

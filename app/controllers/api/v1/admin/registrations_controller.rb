@@ -3,7 +3,7 @@ module Api
     module Admin
       class RegistrationsController < Api::V1::ApiController
 
-        swagger_controller :api_v1_admin_registrations, 'Main admin: registrations', resource_path: 'Main admin: registrations'
+        swagger_controller :api_v1_admin_registrations, 'Main admin: auth', resource_path: 'Main admin: auth'
 
 
         swagger_api :sign_up do
@@ -58,15 +58,19 @@ module Api
         swagger_api :change_password do
           summary 'Change main admin password'
           param :header, :authtoken, :string, :required, 'main admin authtoken'
+          param :form, :old_password, :string, :required, 'main admin old password'
+          param :form, :new_password, :string, :required, 'main admin new password'
           response :ok, 'Success'
         end
 
         def change_password
           current_main_admin_must_be && return
+          service = MainAdminFlow::ChangePassword.new(current_main_admin, params)
+          service.call
+          return validation_error(service.error_message) if service.error_message
 
-          render_success(current_main_admin)
+          render_success true
         end
-
       end
     end
   end

@@ -37,5 +37,6 @@ en:
     email_or_password_incorrect: Email or password is incorrect
     main_admin_with_this_email_doesnt_exist: Main admin with this email doesnt exist
     you_must_sign_in_for_continue: You must sign in for continue
+    current_password_is_incorect: current password is incorect
 
 
