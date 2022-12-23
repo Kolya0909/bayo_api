@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       resources :main_admins, only: [] do
         get :profile, on: :collection
         put :profile_update, on: :collection
+        delete :delete_profile, on: :collection
       end
     end
   end

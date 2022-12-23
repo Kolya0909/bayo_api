@@ -27,6 +27,18 @@ module Api
         render_success current_main_admin.as_api_response(:list)
       end
 
+      swagger_api :delete_profile do
+        summary 'Delete main admin profile'
+        param :header, :authtoken, :string, :required, 'main admin authtoken'
+        response :ok, 'Success'
+      end
+
+      def delete_profile
+        current_main_admin_must_be && return
+        MainAdminFlow::Destroy.new(current_main_admin).call
+        render_success I18n.t('messages.profile_was_deleted')
+      end
+
     end
   end
 end
