@@ -40,4 +40,5 @@ en:
     current_password_is_incorect: current password is incorect
   messages:
     profile_was_deleted: profile was deleted
+    sessions_was_destroyed: you was logout
 

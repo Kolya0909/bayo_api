@@ -12,9 +12,11 @@ Rails.application.routes.draw do
       namespace :admin do
         post '/sign_up' => 'registrations#sign_up'
         post '/sign_in' => 'registrations#sign_in'
+        post '/log_out' => 'registrations#log_out'
         post '/forgot_password' => 'registrations#forgot_password'
         post '/change_password' => 'registrations#change_password'
       end
+
       resources :main_admins, only: [] do
         get :profile, on: :collection
         put :profile_update, on: :collection

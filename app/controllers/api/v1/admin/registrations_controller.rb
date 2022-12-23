@@ -42,6 +42,18 @@ module Api
                                 .merge({ token: service.token })
         end
 
+        swagger_api :log_out do
+          summary 'Logout of service'
+          param :header, :authtoken, :string, :required, 'Main admin authtoken'
+          response :ok, 'Success'
+        end
+
+        def log_out
+          current_main_admin_must_be && return
+          MainAdminFlow::Logout.new(current_main_admin).call
+          render_success I18n.t('messages.sessions_was_destroyed')
+        end
+
         swagger_api :forgot_password do
           summary 'Main admin reset password'
           param :form, :email, :string, :required, 'Main admin email'
