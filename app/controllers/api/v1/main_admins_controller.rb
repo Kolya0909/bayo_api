@@ -17,12 +17,14 @@ module Api
       swagger_api :profile_update do
         summary 'Update main admin profile'
         param :header, :authtoken, :string, :required, 'main admin authtoken'
-        param :form, :name, :string, :required, 'main admin name'
+        param :form, :name, :string, :optional, 'main admin name'
         response :ok, 'Success'
       end
 
       def profile_update
-
+        current_main_admin_must_be && return
+        MainAdminFlow::Update.new(current_main_admin, params).call
+        render_success current_main_admin.as_api_response(:list)
       end
 
     end
