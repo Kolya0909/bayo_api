@@ -3,6 +3,7 @@ class MainAdmin < ApplicationRecord
   acts_as_api
 
   has_one :admin_token
+  has_many :companies
 
   has_attached_file :avatar,
                  styles: {
@@ -15,7 +16,7 @@ class MainAdmin < ApplicationRecord
 
 
   def avatar_file_url
-    return nil if avatar.file?
+    return nil unless avatar.file?
     avatar.url
   end
 

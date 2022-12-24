@@ -22,6 +22,8 @@ Rails.application.routes.draw do
         put :profile_update, on: :collection
         delete :delete_profile, on: :collection
       end
+
+      resources :companies, only: [:index, :create, :show, :update, :destroy]
     end
   end
 
