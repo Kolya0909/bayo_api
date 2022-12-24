@@ -30,7 +30,7 @@ gem 'redis', '~> 5.0', '>= 5.0.5'
 gem 'sendgrid-ruby'
 
 #image processing
-gem 'paperclip', '~> 6.1'
+gem "kt-paperclip", "~> 6.4", ">= 6.4.1"
 
 #admin panel
 gem 'activeadmin'

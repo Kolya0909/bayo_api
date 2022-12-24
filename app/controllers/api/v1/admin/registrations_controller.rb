@@ -10,6 +10,7 @@ module Api
           summary 'Main admin sign_up'
           param :form, :email, :string, :required, 'Main admin email'
           param :form, :name, :string, :required, 'Main admin name'
+          param :form, :avatar, :string, :optional, 'Main admin avatar'
           param :form, :password, :string, :required, 'Main admin password'
           response :ok, 'Success'
         end

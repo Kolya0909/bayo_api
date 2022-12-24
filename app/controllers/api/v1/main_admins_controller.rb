@@ -5,7 +5,7 @@ module Api
 
       swagger_api :profile do
         summary 'Get info about main admin'
-        param :header, :authtoken, :string, :required, 'main admin authtoken'
+        param :header, :authtoken, :string, :required, 'Main admin authtoken'
         response :ok, 'Success'
       end
 
@@ -17,7 +17,8 @@ module Api
       swagger_api :profile_update do
         summary 'Update main admin profile'
         param :header, :authtoken, :string, :required, 'main admin authtoken'
-        param :form, :name, :string, :optional, 'main admin name'
+        param :form, :name, :string, :optional, 'Main admin name'
+        param :form, :avatar, :string, :optional, 'Main admin avatar'
         response :ok, 'Success'
       end
 
@@ -29,7 +30,7 @@ module Api
 
       swagger_api :delete_profile do
         summary 'Delete main admin profile'
-        param :header, :authtoken, :string, :required, 'main admin authtoken'
+        param :header, :authtoken, :string, :required, 'Main admin authtoken'
         response :ok, 'Success'
       end
 

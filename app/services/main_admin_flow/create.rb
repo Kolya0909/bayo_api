@@ -37,7 +37,7 @@ module MainAdminFlow
     end
 
     def main_admin_params
-      params.permit(:name, :email, :password, :password_confirmation)
+      params.permit(:name, :email, :password, :avatar)
     end
   end
 end

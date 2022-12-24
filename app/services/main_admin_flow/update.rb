@@ -1,7 +1,7 @@
 module MainAdminFlow
   class Update
 
-    MAIN_ADMIN_PARAMS = %i[name].freeze
+    MAIN_ADMIN_PARAMS = %i[name avatar].freeze
 
     def initialize(current_main_admin, params)
       @current_main_admin = current_main_admin
@@ -17,7 +17,8 @@ module MainAdminFlow
 
     def options
       @options||= {
-        name: params[:name]
+        name: params[:name],
+        avatar: params[:avatar]
       }
     end
 
