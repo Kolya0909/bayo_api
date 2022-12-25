@@ -41,4 +41,5 @@ en:
   messages:
     profile_was_deleted: profile was deleted
     sessions_was_destroyed: you was logout
+    company_was_destroyed: you company was destroyed
 
