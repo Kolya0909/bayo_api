@@ -42,6 +42,31 @@ module Api
                                 .merge({ token: service.token })
         end
 
+        swagger_api :log_out do
+          summary 'Logout of service'
+          param :header, :authtoken, :string, :required, 'Customer authtoken'
+          response :ok, 'Success'
+        end
+
+        def log_out
+          current_customer_must_be && return
+          CustomerFlow::Logout.new(current_customer).call
+          render_success I18n.t('messages.sessions_was_destroyed')
+        end
+
+        swagger_api :forgot_password do
+          summary 'Customer reset password'
+          param :form, :email, :string, :required, 'Customer email'
+          response :ok, 'Success'
+        end
+
+        def forgot_password
+          service = CustomerFlow::ForgotPassword.new(params[:email])
+          service.call
+          return validation_error(service.error_message) if service.error_message
+          render_success true
+        end
+
       end
     end
   end

@@ -19,6 +19,20 @@ module Api
         @current_main_admin||= service.main_admin
       end
 
+      def current_customer_must_be
+        if current_customer.nil?
+          render_auth_error
+          return true
+        end
+          false
+      end
+
+      def current_customer
+        service = CustomerFlow::CustomerAuth.new(get_auth_token)
+        service.call
+        @current_customer ||= service.customer
+      end
+
       def get_auth_token
         request.headers['authtoken']
       end
