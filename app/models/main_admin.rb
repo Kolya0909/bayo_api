@@ -14,6 +14,7 @@ class MainAdmin < ApplicationRecord
                  path: 'public/uploads/main_admins/avatars/:hash.:extension',
                  hash_secret: 'secret_string_for_main_admins_avatars'
 
+  validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
   def avatar_file_url
     return nil unless avatar.file?

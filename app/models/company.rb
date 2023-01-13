@@ -16,6 +16,8 @@ class Company < ApplicationRecord
                     path: 'public/uploads/companies/logos/:hash.:extension',
                     hash_secret: 'secret_string_for_companies_logos'
 
+  validates_attachment_content_type :logo, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+
   def company_name
     title
   end
