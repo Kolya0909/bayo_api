@@ -32,6 +32,12 @@ Rails.application.routes.draw do
         post '/change_password' => 'registrations#change_password'
       end
 
+      resources :customers, only: [] do
+        get :profile, on: :collection
+        put :profile_update, on: :collection
+        delete :delete_profile, on: :collection
+      end
+
       resources :companies, only: [:index, :create, :show, :update, :destroy]
     end
   end

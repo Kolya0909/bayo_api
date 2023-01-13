@@ -1,8 +1,6 @@
 module MainAdminFlow
   class Update
 
-    MAIN_ADMIN_PARAMS = %i[name avatar].freeze
-
     def initialize(current_main_admin, params)
       @current_main_admin = current_main_admin
       @params = params

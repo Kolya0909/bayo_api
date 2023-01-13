@@ -28,7 +28,7 @@ module CustomerFlow
     def get_customer
       return unless get_token_data
       result = Customer.find_by(email: get_token_data["email"])
-      @customer = result if result.customer_token.token.eql?(token)
+      @customer = result if result&.customer_token&.token.eql?(token)
     end
   end
 end

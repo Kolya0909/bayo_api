@@ -28,7 +28,7 @@ module MainAdminFlow
     def get_main_admin
       return unless get_token_data
       result = MainAdmin.find_by(email: get_token_data["email"])
-      @main_admin = result if result.admin_token.token.eql?(token)
+      @main_admin = result if result&.admin_token&.token.eql?(token)
     end
   end
 end

@@ -67,6 +67,23 @@ module Api
           render_success true
         end
 
+        swagger_api :change_password do
+          summary 'Change customer password'
+          param :header, :authtoken, :string, :required, 'customer authtoken'
+          param :form, :old_password, :string, :required, 'customer old password'
+          param :form, :new_password, :string, :required, 'customer new password'
+          response :ok, 'Success'
+        end
+
+        def change_password
+          current_customer_must_be && return
+          service = CustomerFlow::ChangePassword.new(current_customer, params)
+          service.call
+          return validation_error(service.error_message) if service.error_message
+
+          render_success true
+        end
+
       end
     end
   end
