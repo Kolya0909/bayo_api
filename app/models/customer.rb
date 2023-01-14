@@ -2,7 +2,8 @@ class Customer < ApplicationRecord
   has_secure_password
   acts_as_api
 
-  has_one :customer_token
+  has_one :customer_token, dependent: :destroy
+  has_many :ratings, as: :user, dependent: :destroy
 
   has_attached_file :avatar,
                     styles: {

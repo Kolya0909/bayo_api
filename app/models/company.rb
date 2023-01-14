@@ -3,6 +3,7 @@ class Company < ApplicationRecord
 
   enum company_type: %i[producer overbuying]
 
+  has_many :products, dependent: :destroy
   belongs_to :main_admin, dependent: :destroy
 
   validates :title, presence: true, uniqueness: true
