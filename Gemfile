@@ -55,6 +55,7 @@ gem 'cancancan'
 
 #for tests
 gem 'rspec', '~> 3.12'
+gem 'thor', '~> 1.2', '>= 1.2.1'
 
 #debaging
 gem 'pry', '~> 0.14.1'
@@ -86,6 +87,9 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem 'rspec-rails'
+  gem 'faker'
+  gem 'shoulda-matchers'
 end
 
 group :development do

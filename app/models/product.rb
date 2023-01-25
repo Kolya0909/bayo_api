@@ -11,6 +11,7 @@ class Product < ApplicationRecord
   belongs_to :brand
 
   has_one :product_info, dependent: :destroy
+  has_many :ratings, dependent: :destroy
 
   has_and_belongs_to_many :categories, -> { distinct }
 
