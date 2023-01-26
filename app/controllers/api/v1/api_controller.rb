@@ -3,6 +3,7 @@ module Api
     class ApiController < ActionController::API
       include Swagger::Docs::Methods
       include ActionController::Caching
+      include ActionController::Helpers
       include ResponseHelper
 
       def current_main_admin_must_be
