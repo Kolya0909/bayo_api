@@ -2,7 +2,6 @@ module Api
   module V1
     class ApiController < ActionController::API
       include Swagger::Docs::Methods
-      include ActionController::Caching
 
       def current_main_admin_must_be
         if current_main_admin.nil?
