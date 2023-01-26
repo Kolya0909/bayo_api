@@ -3,8 +3,6 @@ module Api
     class ApiController < ActionController::API
       include Swagger::Docs::Methods
       include ActionController::Caching
-      include ActionController::Helpers
-      include ResponseHelper
 
       def current_main_admin_must_be
         if current_main_admin.nil?
@@ -44,6 +42,16 @@ module Api
             message: I18n.t('errors.you_must_sign_in_for_continue')
           }
         }, status: 401
+      end
+
+      def render_success(data)
+        render json: {
+          data: data
+        }
+      end
+
+      def validation_error(message)
+        render json: { error: { message: message } }, status: 422
       end
     end
   end
