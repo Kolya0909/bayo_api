@@ -6,4 +6,11 @@ class Category < ApplicationRecord
 
   has_and_belongs_to_many :products, -> { distinct }
 
+  api_accessible :list do |t|
+    t.add :id
+    t.add :title
+    t.add :created_at
+    t.add :updated_at
+  end
+
 end

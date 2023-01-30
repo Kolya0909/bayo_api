@@ -29,6 +29,7 @@ class Company < ApplicationRecord
   end
 
   api_accessible :list do |t|
+    t.add :id
     t.add :title
     t.add :description
     t.add :logo

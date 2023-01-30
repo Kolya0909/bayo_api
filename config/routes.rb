@@ -39,6 +39,7 @@ Rails.application.routes.draw do
       end
 
       resources :companies, only: [:index, :create, :show, :update, :destroy]
+      resources :categories, only: [:index, :create, :update, :destroy]
     end
   end
 
