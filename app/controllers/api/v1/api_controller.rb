@@ -14,7 +14,7 @@ module Api
       def current_main_admin
         service = MainAdminFlow::MainAdminAuth.new(get_auth_token)
         service.call
-        @current_main_admin||= service.main_admin
+        @current_main_admin ||= service.main_admin
       end
 
       def current_customer_must_be
@@ -22,7 +22,7 @@ module Api
           render_auth_error
           return true
         end
-          false
+        false
       end
 
       def current_customer
@@ -55,4 +55,3 @@ module Api
     end
   end
 end
-

@@ -2,9 +2,7 @@ module Api
   module V1
     module Admin
       class RegistrationsController < Api::V1::ApiController
-
         swagger_controller :api_v1_admin_registrations, 'Main admin: auth', resource_path: 'Main admin: auth'
-
 
         swagger_api :sign_up do
           summary 'Main admin sign_up'
@@ -19,17 +17,19 @@ module Api
           service = MainAdminFlow::Create.new(params)
           service.call
 
-          return render_success service.main_admin
-                                .as_api_response(:list)
-                                .merge({token: service.token}) if service.main_admin
+          if service.main_admin
+            return render_success service.main_admin
+                                         .as_api_response(:list)
+                                         .merge({ token: service.token })
+          end
 
           validation_error(service.error_message)
         end
 
         swagger_api :sign_in do
           summary 'Main admin sign_in'
-          param :form, :email, :string, :required, "Main admin email"
-          param :form, :password, :string, :required, "Main admin password"
+          param :form, :email, :string, :required, 'Main admin email'
+          param :form, :password, :string, :required, 'Main admin password'
           response :ok, 'Success'
         end
 
@@ -38,6 +38,7 @@ module Api
           service.call
 
           return validation_error(service.error_message) if service.error_message
+
           render_success service.main_admin
                                 .as_api_response(:list)
                                 .merge({ token: service.token })
@@ -65,6 +66,7 @@ module Api
           service = MainAdminFlow::ForgotPassword.new(params[:email])
           service.call
           return validation_error(service.error_message) if service.error_message
+
           render_success true
         end
 
@@ -88,5 +90,3 @@ module Api
     end
   end
 end
-
-

@@ -1,7 +1,6 @@
 module Api
   module V1
     class CategoriesController < Api::V1::ApiController
-
       swagger_controller :api_v1_categories, 'Categories Flow', resource_path: 'Categories Flow'
 
       swagger_api :index do
@@ -26,7 +25,6 @@ module Api
         current_main_admin_must_be && return
         render_success Category.create!(title: params[:title])
       end
-
     end
   end
 end

@@ -43,8 +43,8 @@ module Api
 
       def show
         current_main_admin_must_be && return
-        render_success current_main_admin.companies.find_by(id: params[:id]).
-          as_api_response(:list)
+        render_success current_main_admin.companies.find_by(id: params[:id])
+                                         .as_api_response(:list)
       end
 
       swagger_api :update do
@@ -74,7 +74,6 @@ module Api
         company.destroy
         render_success I18n.t('messages.company_was_destroyed')
       end
-
     end
   end
 end

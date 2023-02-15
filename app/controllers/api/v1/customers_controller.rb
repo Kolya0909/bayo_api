@@ -1,7 +1,6 @@
 module Api
   module V1
     class CustomersController < Api::V1::ApiController
-
       swagger_controller :api_v1_customers, 'Customer: Profile', resource_path: 'Customer: Profile'
 
       swagger_api :profile do
@@ -43,4 +42,3 @@ module Api
     end
   end
 end
-

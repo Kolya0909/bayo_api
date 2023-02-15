@@ -2,7 +2,6 @@ module Api
   module V1
     module Customer
       class RegistrationsController < Api::V1::ApiController
-
         swagger_controller :api_v1_customer_registrations, 'Customer: auth', resource_path: 'Customer: auth'
 
         swagger_api :sign_up do
@@ -18,17 +17,19 @@ module Api
           service = CustomerFlow::Create.new(params)
           service.call
 
-          return render_success service.customer
-                                       .as_api_response(:list)
-                                       .merge({token: service.token}) if service.customer
+          if service.customer
+            return render_success service.customer
+                                         .as_api_response(:list)
+                                         .merge({ token: service.token })
+          end
 
           validation_error(service.error_message)
         end
 
         swagger_api :sign_in do
           summary 'Customer sign_in'
-          param :form, :email, :string, :required, "Customer email"
-          param :form, :password, :string, :required, "Customer password"
+          param :form, :email, :string, :required, 'Customer email'
+          param :form, :password, :string, :required, 'Customer password'
           response :ok, 'Success'
         end
 
@@ -37,6 +38,7 @@ module Api
           service.call
 
           return validation_error(service.error_message) if service.error_message
+
           render_success service.customer
                                 .as_api_response(:list)
                                 .merge({ token: service.token })
@@ -64,6 +66,7 @@ module Api
           service = CustomerFlow::ForgotPassword.new(params[:email])
           service.call
           return validation_error(service.error_message) if service.error_message
+
           render_success true
         end
 
@@ -83,7 +86,6 @@ module Api
 
           render_success true
         end
-
       end
     end
   end

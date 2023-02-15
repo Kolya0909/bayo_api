@@ -39,7 +39,6 @@ module Api
         MainAdminFlow::Destroy.new(current_main_admin).call
         render_success I18n.t('messages.profile_was_deleted')
       end
-
     end
   end
 end
