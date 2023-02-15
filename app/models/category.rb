@@ -1,5 +1,4 @@
 class Category < ApplicationRecord
-
   acts_as_api
 
   validates :title, presence: true
@@ -12,5 +11,4 @@ class Category < ApplicationRecord
     t.add :created_at
     t.add :updated_at
   end
-
 end

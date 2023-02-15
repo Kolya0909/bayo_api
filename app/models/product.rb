@@ -1,5 +1,4 @@
 class Product < ApplicationRecord
-
   acts_as_api
 
   enum product_status: %i[sold in_stock delivery_expected]
@@ -14,5 +13,4 @@ class Product < ApplicationRecord
   has_many :ratings, dependent: :destroy
 
   has_and_belongs_to_many :categories, -> { distinct }
-
 end

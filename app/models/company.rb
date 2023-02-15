@@ -10,14 +10,14 @@ class Company < ApplicationRecord
   validates :description, presence: true
 
   has_attached_file :logo,
-                    styles:{
+                    styles: {
                       small: 'x300'
                     },
                     url: '/uploads/companies/logos/:hash.:extension',
                     path: 'public/uploads/companies/logos/:hash.:extension',
                     hash_secret: 'secret_string_for_companies_logos'
 
-  validates_attachment_content_type :logo, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+  validates_attachment_content_type :logo, content_type: ['image/jpg', 'image/jpeg', 'image/png', 'image/gif']
 
   def company_name
     title
@@ -25,6 +25,7 @@ class Company < ApplicationRecord
 
   def logo_url
     return nil unless logo.file?
+
     logo.url
   end
 
@@ -39,5 +40,4 @@ class Company < ApplicationRecord
     t.add :time_of_send_order
     t.add :time_of_send_delivery
   end
-
 end
