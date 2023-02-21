@@ -40,6 +40,8 @@ Rails.application.routes.draw do
 
       resources :companies, only: [:index, :create, :show, :update, :destroy]
       resources :categories, only: [:index, :create, :update, :destroy]
+      resources :products, only: [:index, :create, :show, :update, :destroy]
+
     end
   end
 

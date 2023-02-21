@@ -11,4 +11,9 @@ class Category < ApplicationRecord
     t.add :created_at
     t.add :updated_at
   end
+
+  api_accessible :show do |t|
+    t.add :id
+    t.add :title
+  end
 end

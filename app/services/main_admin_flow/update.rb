@@ -15,8 +15,8 @@ module MainAdminFlow
 
     def options
       @options||= {
-        name: params[:name],
-        avatar: params[:avatar]
+        name: params[:name] || current_main_admin.name,
+        avatar: params[:avatar]|| current_main_admin.avatar
       }
     end
 
