@@ -7,14 +7,15 @@ module Api
       swagger_api :index do
         summary "Get all Products"
         param :header, :authtoken, :string, :required, "Main Admin authtoken"
-        param :form, :search, :string, :optional, "Search products by key"
-        param :form, :sort_by, :string, :optional, "Sort by name, price, rating"
+        param :query, :search, :string, :optional, "Search products by key"
+        param :query, :sort_by, :string, :optional, "Sort by name, price, rating"
         response :ok, "Success"
       end
 
       def index
         current_main_admin_must_be && return
-
+        products = FindProducts.new(Product.includes(:product_info, :brand), params).call
+        render_success products.as_api_response(:list)
       end
 
       swagger_api :show do

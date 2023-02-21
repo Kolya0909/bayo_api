@@ -20,11 +20,9 @@ class Product < ApplicationRecord
     t.add :name
     t.add :price
     t.add :rating
-    t.add :categories, template: :show
     t.add :product_type
     t.add :product_status
     t.add :brand
-    t.add :company
     t.add :product_info, template: :show
   end
 

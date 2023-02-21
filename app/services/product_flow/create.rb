@@ -21,7 +21,6 @@ module ProductFlow
       @product_options ||= {
         name: params[:name],
         price: params[:price],
-        rating: params[:rating],
         category_ids: params[:category_ids],
         product_type: params[:product_type],
         product_status: params[:product_status],
