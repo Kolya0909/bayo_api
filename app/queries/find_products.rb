@@ -3,6 +3,7 @@ class FindProducts
   def initialize(relation, params)
     @relation = relation
     @params = params
+    @search = params[:search]
   end
 
   SORTING = {
@@ -13,12 +14,17 @@ class FindProducts
   }.freeze
 
   def call
-    SORTING[sort_by].call(relation)
+    scope = make_search
+    SORTING[sort_by].call(scope)
   end
 
   private
 
-  attr_reader :relation, :params, :sort_by
+  attr_reader :relation, :params, :sort_by, :search
+
+  def make_search
+    search.nil? ? relation : relation.where("name LIKE ?", "%#{search}%")
+  end
 
   def sort_by
     @sort_by = sorting_params_invalid? ? :default : params[:sort_by].to_sym
@@ -27,5 +33,4 @@ class FindProducts
   def sorting_params_invalid?
     SORTING.keys.exclude?(params[:sort_by].try(:to_sym))
   end
-
 end
