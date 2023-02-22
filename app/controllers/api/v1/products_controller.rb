@@ -6,27 +6,25 @@ module Api
 
       swagger_api :index do
         summary "Get all Products"
-        param :header, :authtoken, :string, :required, "Main Admin authtoken"
         param :query, :search, :string, :optional, "Search products by key"
         param :query, :sort_by, :string, :optional, "Sort by name, price, rating"
         response :ok, "Success"
       end
 
       def index
-        current_main_admin_must_be && return
-        products = FindProducts.new(Product.includes(:product_info, :brand), params).call
+        products = FindProducts.new(Product.includes(:product_info), params).call
         render_success products.as_api_response(:list)
       end
 
       swagger_api :show do
         summary "Get Product by id"
-        param :header, :authtoken, :string, :required, "Main Admin authtoken"
-        param :query, :id, :string, :required, "Product identifier"
+        param :path, :id, :string, :required, "Product identifier"
         response :ok, "Success"
       end
 
       def show
-
+        product = Product.find_by(id: params[:id])
+        render_success product.as_api_response(:show)
       end
 
       swagger_api :create do
