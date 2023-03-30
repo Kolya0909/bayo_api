@@ -1,6 +1,6 @@
 module Api
   module V1
-    class ProductsController < Api::V1::ApiController
+    class ProductsController < ApiController
 
       swagger_controller :api_v1_products, "Products Flow", resource_path: "Products Flow"
 
@@ -55,8 +55,9 @@ module Api
       end
 
       swagger_api :update do
-        summary "Create one Product"
+        summary "Update one Product"
         param :header, :authtoken, :string, :required, "Main Admin authtoken"
+        param :path, :id, :string, :required, "Product identifier"
         param :form, :name, :string, :required, "Product name"
         param :form, :price, :string, :required, "Product price"
         param :form, :product_type, :string, :required, "telephon | smartphon | tablet | tv | laptop"
@@ -76,7 +77,35 @@ module Api
 
       def update
         current_main_admin_must_be && return
+        service = ProductFlow::Update.new(params)
+        service.call
+        render_success service.product.as_api_response(:list)
+      end
 
+      swagger_api :destroy do
+        summary "Delete product"
+        param :header, :authtoken, :string, :required, "Main admin authtoken"
+        param :path, :id, :string, :required, "Product identifier"
+        response :ok, "Success"
+      end
+
+      def destroy
+        product = Product.find_by(id: params[:id])
+        render_success "Deleted" if product.destroy!
+      end
+
+      swagger_api :add_products_to_basket do
+        summary "Add products to basket"
+        param :header, :authtoken, :string, :required, "Customer authtoken"
+        param :form, :product_ids, :string, :required, "Product identifiers example '12,23,45'"
+        response :ok, "Success"
+      end
+
+      def add_products_to_basket
+        current_customer_must_be && return
+        service = ProductFlow::AddProductsToBasket.new(current_customer, params[:product_ids])
+
+        render_success service.call
       end
 
     end

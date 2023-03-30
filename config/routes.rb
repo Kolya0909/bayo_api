@@ -40,7 +40,9 @@ Rails.application.routes.draw do
 
       resources :companies, only: [:index, :create, :show, :update, :destroy]
       resources :categories, only: [:index, :create, :update, :destroy]
-      resources :products, only: [:index, :create, :show, :update, :destroy]
+      resources :products, only: [:index, :create, :show, :update, :destroy] do
+        post :add_products_to_basket, on: :collection
+      end
 
     end
   end

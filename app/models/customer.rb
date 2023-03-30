@@ -3,6 +3,8 @@ class Customer < ApplicationRecord
   acts_as_api
 
   has_one :customer_token, dependent: :destroy
+  has_one :basket, dependent: :destroy
+
   has_many :ratings, as: :user
 
   has_attached_file :avatar,

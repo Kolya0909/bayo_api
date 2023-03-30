@@ -1,4 +1,3 @@
-
 include Swagger::Docs::ImpotentMethods
 
 module Swagger
@@ -38,7 +37,5 @@ Swagger::Docs::Config.register_apis('2' => {
   clean_directory: true
 })
 
-
-#Swagger::Docs::Config.base_api_controller = Api::V1::ApiController
 
 

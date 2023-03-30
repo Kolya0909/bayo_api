@@ -11,6 +11,7 @@ module CustomerFlow
     def call
       return @error_message = I18n.t('errors.email_was_used') if customer_was_created?
       create_customer!
+      create_customer_basket!
     end
 
     private
@@ -33,6 +34,10 @@ module CustomerFlow
         :name => @customer.name,
         :exp => Time.now.to_i + 12000
       }
+    end
+
+    def create_customer_basket!
+      Basket.create!(customer: @customer)
     end
 
     def customer_params
