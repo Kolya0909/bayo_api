@@ -8,6 +8,8 @@ module Api
         summary "Get all Products"
         param :query, :search, :string, :optional, "Search products by key"
         param :query, :sort_by, :string, :optional, "Sort by name, price, rating"
+        param :query, :filter_by_product_status, :string, :optional, "Filter by product status in_stock | sold | delivery_expected]"
+        param :query, :filter_by_product_type, :string, :optional, "Filter by product type telephon | smartphon | tablet | tv | laptop"
         response :ok, "Success"
       end
 
@@ -107,6 +109,8 @@ module Api
 
         render_success service.call
       end
+
+
 
     end
   end
