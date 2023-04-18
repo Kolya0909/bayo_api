@@ -110,6 +110,17 @@ module Api
         render_success service.call
       end
 
+      swagger_api :set_product_rate do
+        summary "Set rate to product"
+        param :header, :authtoken, :string, :required, "Customer authtoken"
+        param :path, :id, :string, :required, "Product's identifier"
+        param :form, :rate, :number, :optional, "Rate"
+        response :ok, "Success"
+      end
+
+      def set_product_rate
+
+      end
 
 
     end

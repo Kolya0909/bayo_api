@@ -38,6 +38,7 @@ en:
     main_admin_with_this_email_doesnt_exist: Main admin with this email doesnt exist
     you_must_sign_in_for_continue: You must sign in for continue
     current_password_is_incorect: current password is incorect
+    rate_must_be_from: field rate must be from 0 to 5
   messages:
     profile_was_deleted: profile was deleted
     sessions_was_destroyed: you was logout
