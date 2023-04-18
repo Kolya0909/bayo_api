@@ -119,10 +119,13 @@ module Api
       end
 
       def set_product_rate
+        current_customer_must_be && return
+        service = ProductFlow::SetProductRate.new(current_customer, params)
+        service.call
+        return validation_error(service.error_message) if service.error_message
 
+        render_success true
       end
-
-
     end
   end
 end
