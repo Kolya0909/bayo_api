@@ -15,7 +15,7 @@ module ProductFlow
 
     def create_basket_products!
       product_ids_array.each do |product_id|
-        BasketProduct.create!(customer_id: current_customer.id,
+        BasketProduct.create!(basket_id: current_customer.basket.id,
                               product_id: product_id)
       end
     end
