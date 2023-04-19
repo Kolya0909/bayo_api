@@ -37,7 +37,7 @@ module CustomerFlow
     end
 
     def create_customer_basket!
-      Basket.create!(customer: @customer)
+      Basket.create!(customer_id: @customer.id)
     end
 
     def customer_params
