@@ -6,4 +6,8 @@ class OrderProduct < ApplicationRecord
 
   belongs_to :order
 
+  api_accessible :show do |t|
+    t.add :basket_products, template: :for_order
+  end
+
 end

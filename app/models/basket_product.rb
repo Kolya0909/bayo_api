@@ -6,4 +6,8 @@ class BasketProduct < ApplicationRecord
 
   belongs_to :order_product, optional: true
 
+  api_accessible :for_order do |t|
+    t.add :product, template: :show
+  end
+
 end

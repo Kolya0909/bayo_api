@@ -11,7 +11,7 @@ module OrderFlow
     end
 
     def call
-      return @error_message = I18n.t('errors.customer_cant_create_order') if current_customer.basket.basket_products.empty?
+      #return @error_message = I18n.t('errors.customer_cant_create_order') if current_customer.basket.basket_products.empty?
       create_order
       create_order_product
     end
@@ -26,15 +26,10 @@ module OrderFlow
 
     def create_order_product
       @order_product = OrderProduct.create!(order_id: @order.id, basket_products: basket_products)
-      remove_products_from_basket if @order_product
     end
 
     def basket_products
       current_customer.basket.basket_products
-    end
-
-    def remove_products_from_basket
-      current_customer.basket.basket_products.destroy_all
     end
   end
 end

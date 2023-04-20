@@ -32,7 +32,7 @@ class Product < ApplicationRecord
     t.add :rating
     t.add :product_type
     t.add :product_status
-    t.add :brand
+    t.add :brand, template: :list
     t.add :created_at
     t.add :updated_at
     t.add :product_info, template: :show
