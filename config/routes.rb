@@ -47,6 +47,8 @@ Rails.application.routes.draw do
         post :set_product_rate, on: :member
       end
 
+      resources :orders, only: [:index, :create, :show]
+
     end
   end
 

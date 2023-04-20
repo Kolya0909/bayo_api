@@ -4,4 +4,6 @@ class BasketProduct < ApplicationRecord
   belongs_to :product
   belongs_to :basket
 
+  belongs_to :order_product, optional: true
+
 end

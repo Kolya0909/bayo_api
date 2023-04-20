@@ -6,6 +6,7 @@ class Customer < ApplicationRecord
   has_one :basket, dependent: :destroy
 
   has_many :ratings, as: :user
+  has_many :orders, dependent: :destroy
 
   has_attached_file :avatar,
                     styles: {

@@ -40,8 +40,10 @@ en:
     current_password_is_incorect: current password is incorect
     rate_must_be_from: field rate must be from 0 to 5
     user_cant_set_rate: you can't set rate
+    customer_cant_create_order: you can't create order becouse your basket is empty
   messages:
     profile_was_deleted: profile was deleted
     sessions_was_destroyed: you was logout
     company_was_destroyed: you company was destroyed
+    order_was_created: your order created successfully
 
