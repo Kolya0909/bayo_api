@@ -22,6 +22,7 @@ class Product < ApplicationRecord
     t.add :price
     t.add :rating
     t.add :product_status
+    t.add :product_type
     t.add :product_info, template: :show
   end
 

@@ -21,8 +21,7 @@ class Customer < ApplicationRecord
 
   def avatar_file_url
     return nil unless avatar.file?
-
-    avatar.url
+    avatar.file
   end
 
   api_accessible :list do |t|

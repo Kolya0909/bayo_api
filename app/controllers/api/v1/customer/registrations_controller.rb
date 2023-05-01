@@ -8,7 +8,7 @@ module Api
           summary 'Customer sign_up'
           param :form, :email, :string, :required, 'Customer email'
           param :form, :name, :string, :required, 'Customer name'
-          param :form, :avatar, :string, :optional, 'Customer avatar'
+          param :form, :avatar, :file, :optional, 'Customer avatar'
           param :form, :password, :string, :required, 'Customer password'
           response :ok, 'Success'
         end

@@ -18,7 +18,7 @@ module Api
         summary 'Update customer profile'
         param :header, :authtoken, :string, :required, 'Customer authtoken'
         param :form, :name, :string, :optional, 'Customer name'
-        param :form, :avatar, :string, :optional, 'Customer avatar'
+        param :form, :avatar, :file, :optional, 'Customer avatar'
         response :ok, 'Success'
       end
 

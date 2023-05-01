@@ -18,7 +18,7 @@ module Api
         summary 'Update main admin profile'
         param :header, :authtoken, :string, :required, 'main admin authtoken'
         param :form, :name, :string, :optional, 'Main admin name'
-        param :form, :avatar, :string, :optional, 'Main admin avatar'
+        param :form, :avatar, :file, :optional, 'Main admin avatar'
         response :ok, 'Success'
       end
 
